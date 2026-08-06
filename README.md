@@ -114,12 +114,28 @@ Connect via USB (USB debugging must be enabled on the device) or set up WiFi ADB
 
 ## Startup options
 
-Edit `scripts\start-windows.flags.txt` to customize startup behavior (ports, browser auto-open, install/rebuild flags).
+Copy `scripts\start-windows.flags.txt.example` to `scripts\start-windows.flags.txt` and edit the values to customize startup behavior. The file uses `KEY=VALUE` format — no spaces around `=`, lines starting with `#` are ignored.
 
-| Flag | Effect |
-|---|---|
-| `--install` | Force reinstall backend dependencies |
-| `--rebuild-venv` | Rebuild the Python virtual environment from scratch |
+| Key | Default | Description |
+|---|---|---|
+| `BACKEND_HOST` | `127.0.0.1` | Backend bind address |
+| `BACKEND_PORT` | `8000` | Backend port |
+| `FRONTEND_HOST` | `127.0.0.1` | Frontend bind address |
+| `FRONTEND_PORT` | `5173` | Frontend port |
+| `FRONTEND_API_BASE` | *(auto)* | Override API base URL; leave empty to use `http://BACKEND_HOST:BACKEND_PORT/api` |
+| `OPEN_BROWSER` | `1` | Set to `0` to skip auto-opening the browser |
+| `FORCE_INSTALL` | `0` | Set to `1` to always reinstall backend dependencies |
+| `REBUILD_VENV` | `0` | Set to `1` to rebuild the Python virtual environment from scratch |
+| `ENABLE_LOGIN` | `0` | Set to `1` to require username and password before using the app |
+| `LOGIN_USERNAME` | *(none)* | Required when `ENABLE_LOGIN=1` |
+| `LOGIN_PASSWORD` | *(none)* | Required when `ENABLE_LOGIN=1` |
+
+You can also pass one-time flags directly on the command line:
+
+```powershell
+scripts\start-windows.bat --install       # force reinstall backend dependencies
+scripts\start-windows.bat --rebuild-venv  # rebuild the Python virtual environment
+```
 
 > **Note:** Run `start-windows.bat` directly in PowerShell or CMD. Do not prefix it with `python`.
 
