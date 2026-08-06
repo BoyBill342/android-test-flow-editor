@@ -210,4 +210,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit style, and CI r
 
 ## License
 
-This project is intended for internal test team use. No license has been applied for the MVP version.
+This project is licensed under the MIT License. See the LICENSE file for the full license text.
